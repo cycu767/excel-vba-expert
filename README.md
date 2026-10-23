@@ -2,6 +2,26 @@
 
 23 października 2026. Rozbudowa istniejącego skilla, nie nowy projekt.
 
+# Excel VBA Expert — AI Agent Skill
+
+**An offline-first AI Agent Skill for professional Microsoft Excel VBA development, debugging, code review, maintenance, and automation.**
+
+Excel VBA Expert extends AI coding agents with specialized engineering instructions, 19 expert modules, 7 development workflows, and a searchable offline knowledge base containing 38,187 Microsoft VBA documentation files.
+
+It is designed to work with compatible AI coding agents, including those used in Visual Studio Code.
+
+**This is not a standalone AI model, Excel add-in, or documentation viewer.** It is an installable Agent Skill that guides AI assistants through professional VBA engineering tasks and provides tools for consulting official Microsoft documentation locally.
+
+## How It Works
+
+AI Coding Agent → Excel VBA Expert Skill → Engineering Workflows + Offline Microsoft Documentation → Source-backed VBA Assistance
+
+The core skill is distributed as `skill.zip`. Its companion offline documentation package is distributed separately as `excel-vba-knowledge.zip` in GitHub Releases.
+
+## Installation
+
+Follow the installation instructions below to configure the skill and its companion knowledge base.
+
 ## Dwa pakiety, jedna instalacja
 `skill.zip` zawiera skilla, zachowane 19 modułów eksperckich, siedem workflow,
 stare narzędzia i przykłady oraz nowe narzędzia do pełnej dokumentacji offline.
