@@ -1,0 +1,48 @@
+' Paste in an EMPTY real UserForm code module. Import CButtonHandler.cls first.
+' No .frm/.frx designer or resources are fabricated by this template.
+Option Explicit
+Private mHandlers As Collection
+Private mLoading As Boolean
+
+Private Sub UserForm_Initialize()
+    Dim i As Long
+    Dim button As MSForms.CommandButton
+    Dim handler As CButtonHandler
+    Dim number As Long
+    Dim description As String
+    On Error GoTo Failed
+    mLoading = True
+    Set mHandlers = New Collection
+    For i = 1 To 3
+        Set button = Me.Controls.Add("Forms.CommandButton.1", "cmdDynamic" & CStr(i), True)
+        button.Caption = "Action " & CStr(i)
+        button.Left = 12
+        button.Top = 12 + (i - 1) * 28
+        button.Width = 110
+        button.Height = 22
+        Set handler = New CButtonHandler
+        handler.Attach button
+        mHandlers.Add handler  ' Retain sink after this procedure exits.
+    Next i
+    mLoading = False
+    Exit Sub
+Failed:
+    number = Err.Number
+    description = Err.Description
+    mLoading = False
+    Err.Raise number, "UserForm_Initialize", description
+End Sub
+
+Public Sub Dispose()
+    Dim handler As CButtonHandler
+    If mHandlers Is Nothing Then Exit Sub
+    For Each handler In mHandlers
+        handler.Detach
+    Next handler
+    Set mHandlers = Nothing
+End Sub
+
+Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
+    ' No cancellation in this demo. A production form needs a close-mode policy.
+    Dispose
+End Sub
