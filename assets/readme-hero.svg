@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">Excel VBA Expert — source-backed AI Agent Skill</title>
+  <desc id="heroDesc">An editorial technology banner with a stylized VBA mark, offline documentation metrics, and a small API preflight terminal panel.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A1223"/>
+      <stop offset="0.55" stop-color="#101E34"/>
+      <stop offset="1" stop-color="#0B2330"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#67F4D8"/>
+      <stop offset="1" stop-color="#7BD0FF"/>
+    </linearGradient>
+    <radialGradient id="aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#22D3AE" stop-opacity="0.19"/>
+      <stop offset="1" stop-color="#22D3AE" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#8FA6C3" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000712" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="390" rx="21" fill="url(#bg)"/>
+  <rect width="1200" height="390" rx="21" fill="url(#grid)"/>
+  <circle cx="1010" cy="130" r="300" fill="url(#aura)"/>
+  <circle cx="235" cy="350" r="240" fill="url(#aura)" opacity="0.45"/>
+  <path d="M0 335 C210 255 450 430 718 325 S1030 240 1200 300" fill="none" stroke="#79F5D5" stroke-opacity="0.09" stroke-width="2"/>
+
+  <!-- Monogram -->
+  <rect x="58" y="58" width="51" height="51" rx="14" fill="#153D43" stroke="#65E6C8" stroke-opacity="0.65"/>
+  <path d="M71 75 L81 85 L71 95 M96 75 L86 85 L96 95" fill="none" stroke="#83F8DD" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="128" y="81" fill="#9AB5CC" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3.0">ENGINEERING INTELLIGENCE</text>
+  <text x="128" y="102" fill="#7EA5B1" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="2.1">OFFLINE-FIRST / EVIDENCE-DRIVEN</text>
+
+  <!-- Headline -->
+  <text x="58" y="193" fill="#F6FAFF" font-family="Segoe UI, Arial, sans-serif" font-size="70" font-weight="750" letter-spacing="-2.5">Excel VBA</text>
+  <text x="58" y="261" fill="url(#teal)" font-family="Segoe UI, Arial, sans-serif" font-size="70" font-weight="800" letter-spacing="-2.7">Expert</text>
+  <text x="61" y="300" fill="#B8C9DB" font-family="Segoe UI, Arial, sans-serif" font-size="18">Source-backed AI Agent Skill for real-world VBA systems.</text>
+
+  <!-- Compact stats -->
+  <rect x="59" y="326" width="151" height="35" rx="17" fill="#192F40" stroke="#315468"/>
+  <circle cx="78" cy="343" r="4" fill="#65E4C9"/>
+  <text x="90" y="349" fill="#D9EAF0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="650">38,187 docs</text>
+  <rect x="222" y="326" width="136" height="35" rx="17" fill="#192F40" stroke="#315468"/>
+  <circle cx="242" cy="343" r="4" fill="#65E4C9"/>
+  <text x="254" y="349" fill="#D9EAF0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="650">5 namespaces</text>
+  <rect x="370" y="326" width="136" height="35" rx="17" fill="#192F40" stroke="#315468"/>
+  <circle cx="390" cy="343" r="4" fill="#65E4C9"/>
+  <text x="402" y="349" fill="#D9EAF0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="650">v2.0.1</text>
+
+  <!-- Terminal -->
+  <g filter="url(#shadow)">
+    <rect x="698" y="66" width="442" height="268" rx="17" fill="#101B2C" stroke="#516D80" stroke-opacity="0.78"/>
+  </g>
+  <rect x="699" y="67" width="440" height="47" rx="16" fill="#1A2B3B"/>
+  <path d="M699 98H1139V114H699Z" fill="#1A2B3B"/>
+  <circle cx="723" cy="90" r="5" fill="#FA8F89"/>
+  <circle cx="742" cy="90" r="5" fill="#F6C66B"/>
+  <circle cx="761" cy="90" r="5" fill="#5BDDAB"/>
+  <text x="787" y="95" fill="#ABC4D5" font-family="Consolas, Menlo, monospace" font-size="13" letter-spacing="1">API PREFLIGHT</text>
+  <rect x="1051" y="81" width="63" height="19" rx="9" fill="#1D4147"/>
+  <text x="1082" y="94.5" fill="#96E8D6" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="10">READ-ONLY</text>
+
+  <text x="726" y="151" fill="#73EDCD" font-family="Consolas, Menlo, monospace" font-size="17">$</text>
+  <text x="749" y="151" fill="#E0EBF6" font-family="Consolas, Menlo, monospace" font-size="17">msforms  ListBox.ItemHeight</text>
+  <rect x="724" y="176" width="389" height="44" rx="8" fill="#332B25" stroke="#7D623B" stroke-opacity="0.72"/>
+  <path d="M737 186 L746 204 H728 Z" fill="#EFC176" opacity="0.92"/>
+  <text x="764" y="202" fill="#F3D19B" font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700">MEMBER NOT CONFIRMED</text>
+  <text x="728" y="246" fill="#A5BBCC" font-family="Consolas, Menlo, monospace" font-size="13">Owner documented.</text>
+  <text x="728" y="265" fill="#A5BBCC" font-family="Consolas, Menlo, monospace" font-size="13">Member needs verification.</text>
+  <path d="M726 285H1111" stroke="#355069"/>
+  <text x="727" y="311" fill="#79E8CC" font-family="Consolas, Menlo, monospace" font-size="12" letter-spacing="0.8">CHECK   /   READ   /   VERIFY   /   TEST</text>
+</svg>
