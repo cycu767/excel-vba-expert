@@ -5,7 +5,15 @@ Evidence labels: **[DOC]** documented behavior; **[ENG]** skill engineering rule
 ## Establish the real host
 [ENG] Record installed Excel build/channel, VBA/Office bitness, references and required ActiveX components. Do not infer a missing library only from a generic compile error. Inspect Tools > References in the actual project and resolve the intended dependency; do not indiscriminately remove every MISSING item.
 
-[DOC: MS-LANGUAGE, MS-DEBUG-MENU] The language documentation includes the VBE add-in model and UI help, and VBE provides project compilation. [ENG] The current skill supplies navigation and deployment rules, not an exhaustive VBIDE API inventory. Verify a proposed editor automation member before using it.
+[DOC: MS-LANGUAGE, MS-DEBUG-MENU] The language documentation includes the VBE add-in model and UI help, and VBE provides project compilation. [DOC] The local `Language/Reference/Visual-Basic-Add-in-Model/` corpus includes
+five grouped chapters (objects, collections, properties, methods and events).
+For example, `VBProject` and `VBComponent` appear under headings in
+`objects-visual-basic-add-in-model.md`. Do not mistake the absence of a
+standalone `api/VBIDE.VBComponent.md` for missing documentation.
+[ENG] These grouped pages are not an exhaustive, per-object VBIDE member
+inventory. Run `api_preflight.py --namespace vbide --symbol VBComponent`, read
+its original lines, and check membership and version in the target Object
+Browser before implementing editor automation.
 
 ## Preserve component identity
 [ENG] Export standard modules, classes and forms using an approved workflow. Keep hidden attributes, document-module identity and .frm/.frx pairing. An imported class called Sheet1 is not automatically the host's original sheet document module. Do not delete/recreate worksheets as a shortcut that loses event binding or CodeName identity.

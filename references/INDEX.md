@@ -23,3 +23,5 @@ Read only the module relevant to the current task. All domain modules are select
 - [VBE, references and deployment boundaries](vbe-deployment.md): source IDs MS-LANGUAGE, MS-DEBUG-MENU, MS-64BIT, VSC-SKILLS.
 
 [Source lookup guide](documentation-index.md) | [Main workflow router](../SKILL.md)
+
+- [Namespace-aware API preflight and missing-member handling](api-namespace-preflight.md): VBA, Excel, MSForms, Office, VBIDE; source ownership and evidence.

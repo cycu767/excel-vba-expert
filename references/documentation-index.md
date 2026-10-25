@@ -20,6 +20,18 @@ Resolve the default knowledge path from metadata/knowledge-config.json relative
 to the installed skill. The default sibling is `../excel-vba-expert-knowledge`.
 Explicit `--kb` overrides EXCEL_VBA_KB, which overrides the portable config.
 
+## Namespace-ownership prerequisite
+
+Use the [API preflight guide](api-namespace-preflight.md) and
+`scripts/api_preflight.py` before implementing an unverified object member.
+Specify `vba`, `excel`, `msforms`, `office` or `vbide`. Results are evidence
+candidates, **not** a guarantee that a given runtime type exposes the member.
+
+A reported miss may be caused by the 8-result default cap, a wrong scope,
+legacy Graph/Access/Outlook name collisions or grouped VBIDE reference chapters.
+Use `--scope all --limit 60`, alternate source titles, and explicit path reads
+before describing a documentation gap.
+
 ## Mandatory sequence
 1. Identify owning namespace and exact member; search locally before uncertain use.
 2. Inspect exact hits. Select by actual source path when names are ambiguous.
@@ -32,6 +44,8 @@ Explicit `--kb` overrides EXCEL_VBA_KB, which overrides the portable config.
 
 ## Commands, from any working directory
 ```text
+python "<skill-root>/scripts/api_preflight.py" --namespace msforms --symbol ListBox.ItemHeight --json
+python "<skill-root>/scripts/api_preflight.py" --namespace vbide --symbol VBComponent --json
 python "<skill-root>/scripts/offline_docs.py" status
 python "<skill-root>/scripts/offline_docs.py" search "Range.Find" --exact --json
 python "<skill-root>/scripts/offline_docs.py" read "Range.Find" --expand-includes

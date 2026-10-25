@@ -32,6 +32,18 @@ For a modal dialog, keep draft values local, accept/cancel by setting an explici
 
 [DOC: MS-MULTIPAGE, MS-TABSTRIP] MultiPage has Pages; TabStrip has Tabs. Do not replace one with the other without redesigning data/control ownership.
 
+## Namespace and property verification
+
+[ENG] `MSForms.ListBox` is not .NET WinForms `ListBox` and an Access form
+is not `MSForms.UserForm`. Do not assume `ListBox.ItemHeight` or
+`UserForm.ScaleMode` exists because similarly named APIs exist elsewhere.
+Use `api_preflight.py` for the exact class/member combination and read the
+matched Microsoft source. `OWNER_TYPE_CONTEXT` proves the form/control is
+documented **not** that a requested member exists. For rendering dimensions,
+verify units (points versus pixels), read/write status, DPI and empirical UI
+results in the target Excel version. [UNVERIFIED] A font-based row-height
+estimate is a layout approximation, not guaranteed pixel-perfect.
+
 ## Event wiring and loading
 [DOC: MS-CONTROLS-ADD, MS-DIM] Runtime Controls.Add uses a ProgID; WithEvents variables require a class and cannot be arrays or As New. [ENG] Retain one handler object per dynamic control in a collection, otherwise its events can disappear with the handler's lifetime. See `CButtonHandler.cls` and `DynamicButtons.form-code.txt`. Do not assume a procedure named after a new control automatically receives events.
 
