@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.2 - 2026-10-25
+- Redesigned the GitHub README with a vector hero banner, two Mermaid diagrams, an API verification walkthrough, clearer installation steps, and explicit evidence/limitations.
+- Reconciled the downloadable skill package, the repository layout, and the named release archive; retained namespace-aware API preflight from v2.0.1.
+- Updated the package file-integrity manifest for the revised documentation and added SVG banner.
+- Reused the exact previous offline Microsoft knowledge archive without changes; no VBA/Excel compilation or runtime testing is claimed for this documentation-focused release.
+
 ## 2.0.1 - 2026-10-25
 - Audited the named VBA, Excel, MSForms, Office and VBIDE objects against the supplied snapshot; all 15 named entries have source documentation.
 - Added read-only namespace-aware `api_preflight.py` and regression tests for cross-library mistakes and unconfirmed MSForms members.

@@ -9,7 +9,7 @@
 <p align="center">A practical, offline-first <strong>AI Agent Skill</strong> for developing, debugging, reviewing, refactoring, and maintaining Microsoft Excel VBA applications.</p>
 
 <p align="center">
-  <a href="https://github.com/cycu767/excel-vba-expert/releases/tag/v2.0.1"><img alt="Release v2.0.1" src="https://img.shields.io/badge/release-v2.0.1-2C89A0?style=flat-square" /></a>
+  <a href="https://github.com/cycu767/excel-vba-expert/releases/tag/v2.0.2"><img alt="Release v2.0.2" src="https://img.shields.io/badge/release-v2.0.2-2C89A0?style=flat-square" /></a>
   <img alt="38,187 Microsoft documentation files" src="https://img.shields.io/badge/Microsoft_docs-38%2C187-17836D?style=flat-square" />
   <img alt="19 expert modules" src="https://img.shields.io/badge/expert_modules-19-355C9A?style=flat-square" />
   <img alt="7 workflows" src="https://img.shields.io/badge/workflows-7-355C9A?style=flat-square" />
@@ -64,7 +64,7 @@ flowchart TB
     USER["Developer / VBA project"] --> AGENT["Compatible AI coding agent"]
     AGENT --> SKILL["Excel VBA Expert · SKILL.md"]
 
-    subgraph CORE["Core skill · skill.zip"]
+    subgraph CORE["Core skill · excel-vba-expert-v2.0.2.zip"]
       SKILL --> ROUTES["7 engineering workflows"]
       SKILL --> MODULES["19 expert modules"]
       SKILL --> TOOLS["Local Python tools"]
@@ -90,11 +90,11 @@ flowchart TB
     class DOCS,INDEX,INTEGRITY evidence;
 ```
 
-**Two packages, one installation.** The code, workflows, and agent instructions remain small; the larger Microsoft documentation snapshot lives alongside the skill and does not need to be rebuilt or downloaded again for a v2.0.1 core-skill upgrade.
+**Two packages, one installation.** The code, workflows, and agent instructions remain small; the larger Microsoft documentation snapshot lives alongside the skill and does not need to be rebuilt or downloaded again for a v2.0.2 core-skill upgrade.
 
 ## API verification
 
-The v2.0.1 release introduces [`api_preflight.py`](scripts/api_preflight.py), a read-only helper that looks for documentation evidence *within the specified API namespace*.
+Introduced in v2.0.1, the skill includes [`api_preflight.py`](scripts/api_preflight.py), a read-only helper that looks for documentation evidence *within the specified API namespace*.
 
 ```mermaid
 flowchart LR
@@ -157,10 +157,10 @@ Go to **[Releases](https://github.com/cycu767/excel-vba-expert/releases/latest)*
 
 | Archive | Purpose |
 |---|---|
-| **`skill.zip`** | Agent instructions, modules, workflows, Python utilities, VBA examples, and tests. |
+| **`excel-vba-expert-v2.0.2.zip`** | Agent instructions, modules, workflows, Python utilities, VBA examples, and tests. |
 | **`excel-vba-knowledge.zip`** | Offline Microsoft documentation snapshot, full-text index, portable indexes, and preserved source notices. |
 
-Both are needed for the complete offline documentation experience. The knowledge ZIP from v2.0.0 is reusable with v2.0.1.
+Both are needed for the complete offline documentation experience. The unchanged knowledge ZIP from v2.0.0 is reusable with v2.0.2.
 
 ### 2. Install on Windows (PowerShell)
 
@@ -175,8 +175,8 @@ $skill = Join-Path $base 'excel-vba-expert'
 $kb = Join-Path $base 'excel-vba-expert-knowledge'
 $backup = Join-Path $HOME ('.copilot\skill-backups\vba-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
 
-if (-not (Test-Path -LiteralPath '.\skill.zip' -PathType Leaf)) {
-    throw 'Download skill.zip before installing.'
+if (-not (Test-Path -LiteralPath '.\excel-vba-expert-v2.0.2.zip' -PathType Leaf)) {
+    throw 'Download excel-vba-expert-v2.0.2.zip before installing.'
 }
 if (-not (Test-Path -LiteralPath $kb) -and
     -not (Test-Path -LiteralPath '.\excel-vba-knowledge.zip' -PathType Leaf)) {
@@ -190,7 +190,7 @@ if (Test-Path -LiteralPath $skill) {
     New-Item -ItemType Directory -Force -Path $backup | Out-Null
     Move-Item -LiteralPath $skill -Destination (Join-Path $backup 'excel-vba-expert')
 }
-Expand-Archive -LiteralPath '.\skill.zip' -DestinationPath $base
+Expand-Archive -LiteralPath '.\excel-vba-expert-v2.0.2.zip' -DestinationPath $base
 
 # Keep an existing knowledge package; only extract it for a fresh installation.
 if (-not (Test-Path -LiteralPath $kb)) {
