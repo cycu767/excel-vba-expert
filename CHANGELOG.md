@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.1 - local candidate (not published)
+## 2.0.1 - 2026-10-25
 - Audited the named VBA, Excel, MSForms, Office and VBIDE objects against the supplied snapshot; all 15 named entries have source documentation.
 - Added read-only namespace-aware `api_preflight.py` and regression tests for cross-library mistakes and unconfirmed MSForms members.
 - Routed agents to original Microsoft source and grouped VBIDE chapters; mitigated 8-result and PowerShell/CMD confusion.
