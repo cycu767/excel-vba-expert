@@ -1,361 +1,327 @@
-# Excel VBA Expert v2.0.1 — AI Agent Skill with Offline Microsoft VBA Documentation
+<p align="center">
+  <img src="assets/readme-hero.svg" alt="Excel VBA Expert: offline-first, source-backed AI Agent Skill" width="100%" />
+</p>
 
-**An offline-first AI Agent Skill for professional Microsoft Excel VBA development, debugging, code review, maintenance, and automation.**
+<h1 align="center">Excel VBA Expert</h1>
 
-**Release date:** October 23, 2026  
-**Project status:** An extension of the existing Excel VBA Expert Skill, not a new project.
+<p align="center"><strong>Source-backed VBA engineering for AI coding agents.</strong></p>
 
-Excel VBA Expert extends compatible AI coding agents with specialized engineering instructions, 19 expert modules, 7 development workflows, and a searchable offline knowledge base containing 38,187 Microsoft VBA documentation files.
+<p align="center">A practical, offline-first <strong>AI Agent Skill</strong> for developing, debugging, reviewing, refactoring, and maintaining Microsoft Excel VBA applications.</p>
 
-The skill is designed for professional VBA development, including complex, business-critical, and long-lived Excel applications.
+<p align="center">
+  <a href="https://github.com/cycu767/excel-vba-expert/releases/tag/v2.0.1"><img alt="Release v2.0.1" src="https://img.shields.io/badge/release-v2.0.1-2C89A0?style=flat-square" /></a>
+  <img alt="38,187 Microsoft documentation files" src="https://img.shields.io/badge/Microsoft_docs-38%2C187-17836D?style=flat-square" />
+  <img alt="19 expert modules" src="https://img.shields.io/badge/expert_modules-19-355C9A?style=flat-square" />
+  <img alt="7 workflows" src="https://img.shields.io/badge/workflows-7-355C9A?style=flat-square" />
+  <img alt="5 API namespaces" src="https://img.shields.io/badge/API_namespaces-5-6E5BA8?style=flat-square" />
+  <img alt="Python 3.10+" src="https://img.shields.io/badge/Python-3.10%2B-405B77?style=flat-square" />
+</p>
 
-**This is not a standalone AI model, Excel add-in, or documentation viewer.** It is an installable AI Agent Skill that guides AI assistants through VBA engineering tasks and provides local tools for consulting official Microsoft documentation.
+<p align="center">
+  <a href="https://github.com/cycu767/excel-vba-expert/releases/latest">Get the latest release</a>
+  &nbsp;·&nbsp; <a href="#quick-start">Quick start</a>
+  &nbsp;·&nbsp; <a href="#api-verification">API verification</a>
+  &nbsp;·&nbsp; <a href="#documentation-and-evidence">Documentation</a>
+</p>
 
-## How It Works
+---
 
-AI Coding Agent → Excel VBA Expert Skill → Engineering Workflows + Offline Microsoft Documentation → Source-backed VBA Assistance
+> **The idea:** AI can write VBA quickly. Reliable VBA engineering also requires the *right object model*, documented API contracts, careful changes, and evidence that the code actually works.
 
-The project is distributed in two packages:
+Excel VBA Expert equips a compatible AI coding agent with a structured engineering workflow, specialized reference material, and local tools for searching and reading Microsoft documentation. It is **not** a standalone AI model, an Excel add-in, or a substitute for compiling and testing VBA in Excel.
 
-| Package | Contents |
+## At a glance
+
+| | Capability | What it provides |
+|:--:|---|---|
+| 📚 | **Complete local documentation snapshot** | 38,187 Markdown documents from the supplied `MicrosoftDocs/VBA-Docs` snapshot, with full-source reading, search, and integrity checks. |
+| 🧭 | **Namespace-aware API preflight** | Checks source evidence for **VBA, Excel, MSForms, Office, and VBIDE** before using uncertain members. |
+| 🧩 | **19 expert modules** | Targeted engineering guidance on VBA, Excel's object model, UserForms, events, COM, Windows APIs, testing, and more. |
+| 🔁 | **7 engineering workflows** | Develop, debug, review, refactor, test, audit UserForms, and troubleshoot COM. |
+| 🛡️ | **Safety by design** | Read-only investigation first, explicit authorization for changes, working copies, and separation of documentation from runtime evidence. |
+| 🔌 | **Agent-friendly installation** | A portable skill plus a separate, reusable offline knowledge package. No hosted search service required. |
+
+## Why it exists
+
+VBA has several overlapping object models. An API name that exists in one library or host may not exist in another. For example, .NET WinForms and MSForms both have list controls, but their properties are **not interchangeable**.
+
+A conventional documentation search may find a related page and still leave a crucial question unanswered: *does this specific object actually own this member?*
+
+**Excel VBA Expert addresses that gap with a source-verification workflow — not by pretending every lookup is a compiler.**
+
+| Risk | Engineering response |
 |---|---|
-| `skill.zip` | Core AI Agent Skill, engineering instructions, expert modules, workflows, scripts, examples, and tests |
-| `excel-vba-knowledge.zip` | Complete offline Microsoft VBA documentation snapshot, full-text search index, portable indexes, and source metadata |
+| Confusing Excel, MSForms, Office, VBIDE, or VBA language APIs | Identify the owning namespace before searching. |
+| Treating a keyword hit as proof of a supported member | Run namespace-aware preflight, then read the original source. |
+| Inventing behavior when documentation is incomplete | Report the source gap or uncertainty explicitly. |
+| Changing business-critical workbooks without safeguards | Inspect first; use a working copy and a recoverable change plan. |
+| Equating documentation lookup with tested code | Record documentation, static review, compilation, and runtime results separately. |
 
-**Both packages are required for full offline functionality.**
+## Architecture
 
-The knowledge base is distributed separately through GitHub Releases to keep the main repository and core skill lightweight.
+```mermaid
+flowchart TB
+    USER["Developer / VBA project"] --> AGENT["Compatible AI coding agent"]
+    AGENT --> SKILL["Excel VBA Expert · SKILL.md"]
 
-## Two Packages, One Installation
+    subgraph CORE["Core skill · skill.zip"]
+      SKILL --> ROUTES["7 engineering workflows"]
+      SKILL --> MODULES["19 expert modules"]
+      SKILL --> TOOLS["Local Python tools"]
+    end
 
-`skill.zip` contains the skill, all 19 preserved expert modules, 7 workflows, existing tools and examples, and the new utilities for accessing the complete offline documentation.
+    subgraph KNOWLEDGE["Offline knowledge · excel-vba-knowledge.zip"]
+      DOCS["38,187 Microsoft Markdown documents"]
+      INDEX["SQLite FTS5 + portable indexes"]
+      INTEGRITY["Original source paths + SHA-256 checks"]
+    end
 
-`excel-vba-knowledge.zip` contains the **actual Microsoft VBA-Docs source files**: all 38,187 Markdown documents from the supplied repository snapshot, the remaining repository files, original licenses, a full-text search index, and portable JSONL indexes.
+    TOOLS --> INDEX
+    INDEX --> DOCS
+    TOOLS --> INTEGRITY
+    ROUTES --> GUIDANCE["Source-backed VBA guidance"]
+    MODULES --> GUIDANCE
+    DOCS --> GUIDANCE
+    GUIDANCE --> REVIEW["Review, compile and test in target Excel environment"]
 
-There is no need to download the Microsoft repository separately or rebuild the search index.
-
-After extracting **both archives into the same directory**, the expected structure is:
-
-```text
-%USERPROFILE%\.copilot\skills\
-  excel-vba-expert\
-    SKILL.md
-    scripts\offline_docs.py
-    metadata\knowledge-config.json
-  excel-vba-expert-knowledge\
-    manifest.json
-    index.sqlite
-    documents.jsonl
-    repository\
-      api\Excel.Range.Find.md
-      Language\...
-      LICENSE
-      LICENSE-CODE
-      ThirdPartyNotices
+    classDef focus fill:#123D4B,color:#FFFFFF,stroke:#4AC6AA,stroke-width:2px;
+    classDef evidence fill:#EFF8F5,color:#15392F,stroke:#6CBFA3;
+    class SKILL,GUIDANCE focus;
+    class DOCS,INDEX,INTEGRITY evidence;
 ```
 
-The knowledge directory is a sibling of the skill directory, **not a second skill**. It does not contain a `SKILL.md` file.
+**Two packages, one installation.** The code, workflows, and agent instructions remain small; the larger Microsoft documentation snapshot lives alongside the skill and does not need to be rebuilt or downloaded again for a v2.0.1 core-skill upgrade.
 
-Both ZIP archives already contain their own root directories. Do not create an additional nesting level when extracting them.
+## API verification
 
-The extracted files contain approximately 177 MB of logical data. Actual disk usage may be higher because of the large number of small files. Reserve at least **400 MB of free disk space**.
+The v2.0.1 release introduces [`api_preflight.py`](scripts/api_preflight.py), a read-only helper that looks for documentation evidence *within the specified API namespace*.
 
-## Windows Installation and Updates
+```mermaid
+flowchart LR
+    A["Identify object and library"] --> B["Run API preflight"]
+    B --> C["Read original Microsoft source"]
+    C --> D{"Owner + member confirmed?"}
+    D -- "Yes" --> E["Implement in a working copy"]
+    D -- "Uncertain" --> F["Expand lookup / check Object Browser"]
+    F --> D
+    E --> G["Compile and test in Excel when authorized"]
 
-Keep both downloaded ZIP archives in the same directory.
+    classDef decision fill:#FFF2D8,color:#574018,stroke:#D4A34D;
+    classDef safe fill:#E4F7F0,color:#164C3A,stroke:#57B992;
+    class D decision;
+    class G safe;
+```
 
-The following PowerShell script moves existing installation directories to a backup location outside the Skills discovery directory before installing the new version. It does not delete the previous installation.
-
-Open PowerShell in the directory containing both ZIP files and execute:
+### A real example: an uncertain MSForms property
 
 ```powershell
-$ErrorActionPreference = "Stop"
+$skill = Join-Path $HOME '.copilot\skills\excel-vba-expert'
+python "$skill\scripts\api_preflight.py" --namespace msforms --symbol ListBox.ItemHeight
+```
 
-foreach ($zip in @("skill.zip", "excel-vba-knowledge.zip")) {
-    if (-not (Test-Path -LiteralPath $zip -PathType Leaf)) {
-        throw "Missing archive: $zip"
-    }
+Representative result:
+
+```text
+msforms :: ListBox.ItemHeight
+MEMBER_NOT_CONFIRMED_OWNER_ONLY
+```
+
+The ListBox owner's documentation is discoverable, but the requested member is **not established for that owner by the source**. This is a reason to stop and investigate — **not** a claim that the helper has proved universal nonexistence.
+
+Compare that with a documented Excel method:
+
+```powershell
+python "$skill\scripts\api_preflight.py" --namespace excel --symbol Range.Find
+python "$skill\scripts\offline_docs.py" read 'api/Excel.Range.Find.md' --expand-includes
+```
+
+The preflight can locate member documentation, but the agent must still verify object ownership, parameters, applicability, and relevant remarks in the original document.
+
+### Five supported namespaces
+
+| Namespace | Examples | Watch out for |
+|---|---|---|
+| **VBA** | `Split`, `InStr`, `Collection` | Language APIs are not the same as external Scripting Runtime members. |
+| **Excel** | `Workbook.Save`, `Range.Find`, `Worksheet.Change` | Native Excel objects are not legacy Microsoft Graph objects. |
+| **MSForms** | `UserForm`, `ListBox`, `TextBox` | Access and .NET WinForms members cannot be assumed to exist in MSForms. |
+| **Office** | `FileDialog`, `CommandBars` | Shared Office APIs may differ from application-specific objects. |
+| **VBIDE** | `VBProject`, `VBComponent`, `CodeModule` | Source pages are often grouped; project access can be restricted by policy. |
+
+**Evidence statuses matter:** `SOURCE_DOCUMENT_FOUND` is not the same as a verified member contract, and `CANDIDATES_REQUIRE_MEMBER_VERIFICATION` is not approval. See the [API ownership and preflight guide](references/api-namespace-preflight.md) and [five-library audit](FIVE-LIBRARY-AUDIT.md).
+
+## Quick start
+
+### 1. Download the two release assets
+
+Go to **[Releases](https://github.com/cycu767/excel-vba-expert/releases/latest)** and download:
+
+| Archive | Purpose |
+|---|---|
+| **`skill.zip`** | Agent instructions, modules, workflows, Python utilities, VBA examples, and tests. |
+| **`excel-vba-knowledge.zip`** | Offline Microsoft documentation snapshot, full-text index, portable indexes, and preserved source notices. |
+
+Both are needed for the complete offline documentation experience. The knowledge ZIP from v2.0.0 is reusable with v2.0.1.
+
+### 2. Install on Windows (PowerShell)
+
+Requires **Python 3.10+** and Python's built-in SQLite library with **FTS5** enabled. No additional `pip` packages, Git installation, embedding model, hosted vector database, or API key is needed for the local documentation tools.
+
+Open PowerShell in the directory containing the two downloaded archives:
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$base = Join-Path $HOME '.copilot\skills'
+$skill = Join-Path $base 'excel-vba-expert'
+$kb = Join-Path $base 'excel-vba-expert-knowledge'
+$backup = Join-Path $HOME ('.copilot\skill-backups\vba-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+
+if (-not (Test-Path -LiteralPath '.\skill.zip' -PathType Leaf)) {
+    throw 'Download skill.zip before installing.'
 }
-
-$base = Join-Path $HOME ".copilot\skills"
-$backup = Join-Path $HOME (".copilot\skill-backups\vba-" + (Get-Date -Format "yyyyMMdd-HHmmss"))
+if (-not (Test-Path -LiteralPath $kb) -and
+    -not (Test-Path -LiteralPath '.\excel-vba-knowledge.zip' -PathType Leaf)) {
+    throw 'Download excel-vba-knowledge.zip for a fresh installation.'
+}
 
 New-Item -ItemType Directory -Force -Path $base | Out-Null
 
-foreach ($name in @("excel-vba-expert", "excel-vba-expert-knowledge")) {
-    $existing = Join-Path $base $name
+# Preserve the installed skill before installing/replacing the core package.
+if (Test-Path -LiteralPath $skill) {
+    New-Item -ItemType Directory -Force -Path $backup | Out-Null
+    Move-Item -LiteralPath $skill -Destination (Join-Path $backup 'excel-vba-expert')
+}
+Expand-Archive -LiteralPath '.\skill.zip' -DestinationPath $base
 
-    if (Test-Path -LiteralPath $existing) {
-        New-Item -ItemType Directory -Force -Path $backup | Out-Null
-        Move-Item -LiteralPath $existing -Destination (Join-Path $backup $name)
+# Keep an existing knowledge package; only extract it for a fresh installation.
+if (-not (Test-Path -LiteralPath $kb)) {
+    if (-not (Test-Path -LiteralPath '.\excel-vba-knowledge.zip' -PathType Leaf)) {
+        throw 'Download excel-vba-knowledge.zip for a fresh installation.'
     }
+    Expand-Archive -LiteralPath '.\excel-vba-knowledge.zip' -DestinationPath $base
 }
 
-Expand-Archive -LiteralPath .\skill.zip -DestinationPath $base
-Expand-Archive -LiteralPath .\excel-vba-knowledge.zip -DestinationPath $base
-
-$skill = Join-Path $base "excel-vba-expert"
-
-py -3 "$skill\scripts\offline_docs.py" verify
-
-if ($LASTEXITCODE -ne 0) {
-    throw "Knowledge verification failed; keep the backup."
-}
+python "$skill\scripts\validate_skill.py"
+if ($LASTEXITCODE -ne 0) { throw 'Skill validation failed.' }
+python "$skill\scripts\offline_docs.py" verify
+if ($LASTEXITCODE -ne 0) { throw 'Knowledge verification failed.' }
 ```
 
-Do not delete the backup of the previous version until the new installation has been verified.
+The script places backups **outside** the skill-discovery directory and retains any existing knowledge database. Do not remove the backup until the new skill has been checked. If the existing knowledge directory is incomplete, restore or replace it from the knowledge ZIP before running verification.
 
-After installation, start a new conversation with your AI coding agent and select or explicitly reference `excel-vba-expert`.
+Expected directory layout:
 
-Skill discovery depends on the AI client, extension, and configuration. Installation in one agent does not automatically make the skill available to every other agent.
+```text
+~/.copilot/skills/
+├── excel-vba-expert/
+│   ├── SKILL.md
+│   ├── scripts/
+│   ├── references/
+│   └── workflows/
+└── excel-vba-expert-knowledge/
+    ├── manifest.json
+    ├── index.sqlite
+    ├── documents.jsonl
+    └── repository/
+```
 
-## Requirements
+The knowledge directory is a **sibling**, not a nested folder or a second skill. Each ZIP already contains its own top-level directory. Reserve at least **400 MB of free disk space** for installation and extraction.
 
-- Python 3.10 or later.
-- Python's built-in `sqlite3` module with SQLite FTS5 support.
-- Sufficient disk space for the extracted documentation corpus.
+> **Agent compatibility:** `.copilot/skills` is one installation layout used with compatible clients. Skill discovery and activation depend on the AI client, extension, and configuration. Installing the files does not automatically register this skill in every coding agent.
 
-The following are **not required** for offline documentation search:
+### 3. Try the offline tools
 
-- Additional pip packages.
-- Git.
-- A vector database server.
-- An embedding model.
-- External API keys.
-- Microsoft Excel.
-- An internet connection.
-
-The original Markdown files can also be read directly without Python.
-
-To verify SQLite FTS5 support without internet access:
+From PowerShell, with `$skill` set as above:
 
 ```powershell
-py -3 -c "import sqlite3; c=sqlite3.connect(':memory:'); c.execute('CREATE VIRTUAL TABLE t USING fts5(x)'); print('FTS5 OK')"
+# Check the local knowledge package.
+python "$skill\scripts\offline_docs.py" status
+
+# Search and read original Microsoft documentation.
+python "$skill\scripts\offline_docs.py" search 'Range.Find' --exact --json
+python "$skill\scripts\offline_docs.py" read 'api/Excel.Range.Find.md' --expand-includes
+
+# Check a questionable MSForms member.
+python "$skill\scripts\api_preflight.py" --namespace msforms --symbol ListBox.ItemHeight --json
 ```
 
-## Offline Documentation Verification
+The `read` operation returns the original source document and checks its SHA-256 hash. For ambiguous names, provide the exact path returned by search. More options are described in [offline verification](OFFLINE-VERIFICATION.md).
 
-The following commands can be executed from any working directory.
+### 4. Ask your coding agent to use the skill
 
-The knowledge base is located relative to the installed skill, not relative to the current project:
+Use an instruction like this in your AI coding environment:
 
-```powershell
-$skill = Join-Path $HOME ".copilot\skills\excel-vba-expert"
+> Use the **excel-vba-expert** skill. Work read-only first. Verify `Excel.Range.Find` using the local `api_preflight.py` and the complete original Microsoft source via `offline_docs.py`. Show the source path, relevant lines, and any gaps. Then propose safe VBA code. Do not open Excel, run macros, or modify my workbook without explicit authorization.
 
-py -3 "$skill\scripts\offline_docs.py" search "Range.Find" --exact --json
-py -3 "$skill\scripts\offline_docs.py" read "Range.Find" --expand-includes
-py -3 "$skill\scripts\offline_docs.py" read "UserForm.Show"
-py -3 "$skill\scripts\offline_docs.py" read "xlWhole"
-py -3 "$skill\scripts\offline_docs.py" links "Range.Find"
-```
+## What it can help with
 
-By default, the `read` command returns the **complete source document**, not an AI-generated summary.
-
-Every document read includes SHA-256 file integrity verification.
-
-Additional options include:
-
-- `--section Remarks` — retrieve a specific section.
-- `--start-line` — specify the first source line.
-- `--end-line` — specify the last source line.
-- `--json` — return structured JSON output.
-
-When a name is ambiguous, use the exact document path returned by the search command.
-
-For example:
-
-```powershell
-py -3 "$skill\scripts\offline_docs.py" read "api/Excel.Range(object).md"
-```
-
-This distinguishes Excel's `Range` object from similarly named objects in other Office applications.
-
-To search documentation covering other Office products:
-
-```powershell
-py -3 "$skill\scripts\offline_docs.py" search "Document" --scope all
-```
-
-## Example AI Agent Verification Prompt
-
-Use the following prompt to verify that an AI coding agent can discover the skill and retrieve local documentation:
-
-> Use the `excel-vba-expert` skill.
->
-> Without accessing the internet, search the local documentation for `Range.Find`.
->
-> Read the complete source document and identify the local file path and source lines containing the method signature, parameters, and remarks.
->
-> Then propose safe VBA code based on the retrieved Microsoft documentation and the relevant expert engineering module.
->
-> Do not launch Microsoft Excel or modify any project files.
->
-> Clearly distinguish documented API behavior from engineering recommendations.
-
-The same verification approach can be applied to:
-
-- `Workbooks.Open`
-- `Worksheet.Change`
-- `UserForm.Show`
-- `ChartObjects.Add`
-
-If a section is absent from the original Microsoft documentation, the agent must explicitly report that absence rather than invent missing content.
-
-See [Offline Verification Results](OFFLINE-VERIFICATION.md) for the recorded results of these five documentation retrieval tests.
-
-## Real-World AI Agent Integration Test
-
-The skill has been tested with an AI coding agent running in **Visual Studio Code**.
-
-In a practical `Excel.Range.Find` documentation retrieval test, the agent:
-
-1. Discovered and loaded the `excel-vba-expert` skill.
-2. Invoked the local `offline_docs.py` utility.
-3. Retrieved Microsoft documentation for `Excel.Range.Find`.
-4. Identified the method signature and parameters.
-5. Correctly identified the four persistent search settings: `LookIn`, `LookAt`, `SearchOrder`, and `MatchByte`.
-6. Reported the source file path, metadata, and integrity verification information.
-
-The agent's execution history showed actual local tool invocations, providing evidence of successful skill discovery and documentation retrieval.
-
-**Test scope:** This validates the AI agent's ability to use the local skill and documentation tools. It does not constitute end-to-end validation of VBA compilation, Excel automation, or execution of generated code inside Microsoft Excel.
-
-## Updating the Knowledge Base from a New Local Repository Snapshot
-
-Do not overwrite the existing engineering rules or a working knowledge base during an update.
-
-Import the new documentation snapshot into a **new destination directory**:
-
-```powershell
-py -3 "$skill\scripts\import_knowledge.py" --source ".\VBA-Docs-main.zip" --dest "D:\VBA-KB-next"
-
-py -3 "$skill\scripts\offline_docs.py" --kb "D:\VBA-KB-next" verify
-
-py -3 "$skill\scripts\offline_docs.py" --kb "D:\VBA-KB-next" read "Range.Find"
-```
-
-The `--source` argument can point to either a ZIP archive or an extracted repository directory.
-
-The import process:
-
-- Does not download external content.
-- Does not execute content from the imported repository.
-- Does not overwrite an existing destination directory.
-- Excludes only `.git` metadata when importing from a Git working directory.
-- Preserves source documentation and license files without modification.
-
-After verifying the new knowledge base, replace the existing sibling knowledge directory while retaining a backup.
-
-Alternatively, set the `EXCEL_VBA_KB` environment variable in the agent process to point to the new knowledge directory.
-
-The explicit `--kb` option takes precedence over the configured default.
-
-## Preserved Tools and Automated Tests
-
-The original engineering tools and development workflows remain available.
-
-`search_docs.py` continues to search the 70 curated documentation records.
-
-`index_repository.py` remains available as the legacy repository inventory utility.
-
-These tools do not replace complete source retrieval through `offline_docs.py`.
-
-The project also preserves:
-
-- VBA source inspection.
-- Workbook inspection.
-- Skill validation.
-- Explicitly invoked COM testing.
-- Optional verification of public documentation URLs.
-- Existing development examples and helper utilities.
-
-Public URL verification remains disabled unless `--allow-network` is explicitly specified. Network access is not required for normal offline documentation workflows.
-
-The original eight tool/helper files remain unchanged.
-
-To run validation and tests from the skill directory:
-
-```powershell
-py -3 scripts\validate_skill.py
-
-py -3 -m unittest discover -s tests -v
-
-py -3 tests\verify_snapshot.py --archive "<original-VBA-Docs-main.zip>" --out "<new-report.json>"
-```
-
-The final command is optional. It compares every file in the knowledge base against the original input archive.
-
-The automated tests were executed in a Linux environment.
-
-Some filesystem-link tests may require additional privileges on Windows.
-
-The test verifier's `--enforce-os` option requires Linux and `libseccomp`. The documentation search and read tools do not require this library.
-
-## Scope and Limitations
-
-**Complete documentation coverage** means all documents included in the supplied Microsoft VBA-Docs repository snapshot.
-
-It does not mean:
-
-- Coverage of every possible VBA API.
-- Independently verified synchronization with the latest Microsoft GitHub repository.
-- Guaranteed correctness or completeness of the original Microsoft documentation.
-- Guaranteed compatibility with every AI coding agent.
-- Successful compilation or execution of generated VBA code.
-- Completed end-to-end testing of Microsoft Excel, COM automation, or UserForms.
-
-Any omissions, inconsistencies, or historical inaccuracies in the original Microsoft documentation remain visible rather than being silently corrected.
-
-External Win32, Visual Studio Code, and pywin32 documentation is not included in the Microsoft VBA-Docs repository snapshot.
-
-### Offline Operation vs. Offline AI Models
-
-The skill does **not** disable network access for the entire AI client.
-
-It also does not convert a cloud-based AI model into a locally running model.
-
-The documentation search, retrieval, and verification utilities can operate without internet access.
-
-Whether the AI model itself can operate fully offline depends on the selected model, client, and configuration.
-
-### Production Safety
-
-AI-generated VBA code must be reviewed and tested before deployment to production workbooks or business-critical environments.
-
-The skill encourages controlled changes, source-backed API usage, explicit error handling, and regression testing, but it cannot eliminate all implementation risks.
-
-## Documentation Sources and Licensing
-
-The offline documentation corpus is derived from Microsoft's publicly available [MicrosoftDocs/VBA-Docs repository](https://github.com/MicrosoftDocs/VBA-Docs).
-
-The original Microsoft documentation, applicable licenses, copyright notices, and third-party notices are preserved in the knowledge package.
-
-Microsoft documentation and project-specific engineering instructions are maintained as separate components.
-
-This project is independent and is **not affiliated with, endorsed by, or sponsored by Microsoft**.
-
-For detailed attribution and licensing information, see [LICENSES.md](LICENSES.md) and [SOURCES.md](SOURCES.md).
-
-## Project Documentation
-
-| Document | Description |
+| Task | Typical focus |
 |---|---|
-| [SOURCES.md](SOURCES.md) | Documentation sources and provenance |
-| [QUALITY-REPORT.md](QUALITY-REPORT.md) | Documentation quality and indexing information |
-| [ACCEPTANCE.md](ACCEPTANCE.md) | Acceptance criteria and validation evidence |
-| [LIMITATIONS.md](LIMITATIONS.md) | Known technical limitations |
-| [LICENSES.md](LICENSES.md) | Licensing, copyright, and attribution |
-| [CHANGELOG.md](CHANGELOG.md) | Project version history |
-| [OFFLINE-VERIFICATION.md](OFFLINE-VERIFICATION.md) | Recorded offline documentation retrieval tests |
+| **Build and extend** | Workbook automation, user-facing features, charts, and well-structured VBA modules. |
+| **Debug** | Compile errors, run-time failures, event loops, object lifetimes, and state restoration. |
+| **Review and refactor** | Legacy code, performance, security, maintainability, and backward-compatible changes. |
+| **UserForms / MSForms** | Controls, event wiring, layout and UX, with attention to real MSForms APIs. |
+| **COM and interop** | Excel automation, process ownership, bitness, and VBA7/Windows API declarations. |
+| **Test** | Focused acceptance criteria, regression checks, and explicit evidence of what was or was not executed. |
 
-## Feedback and Contributions
+The project includes both [workflow documents](workflows/) and [engineering references](references/) so agents can load only the sections relevant to the task rather than flooding their context with the entire knowledge base.
 
-Excel VBA Expert is publicly available for developers and AI coding agent users interested in reliable, source-backed VBA engineering.
+## Project layout
 
-Feedback, bug reports, compatibility testing, and contributions are welcome through GitHub Issues and Pull Requests.
+```text
+excel-vba-expert/
+├── SKILL.md                  # Agent entrypoint and operating rules
+├── agents/                  # Agent presentation metadata
+├── references/              # 19 expert modules + API/doc navigation
+├── workflows/               # 7 task-specific engineering workflows
+├── scripts/                 # Read-only lookup, verification, inspection tools
+├── tests/                   # Automated checks and acceptance resources
+├── assets/
+│   ├── readme-hero.svg      # This README's vector banner
+│   └── vba/                 # Original VBA examples
+├── metadata/                # Manifests and verification evidence
+├── licenses/                # Preserved license notices
+├── README.md
+├── CHANGELOG.md
+├── OFFLINE-VERIFICATION.md
+├── FIVE-LIBRARY-AUDIT.md
+└── LICENSES.md
+```
 
-**Project repository:** https://github.com/cycu767/excel-vba-expert
+## Documentation and evidence
 
-**Latest release:** https://github.com/cycu767/excel-vba-expert/releases
+This project keeps documentation coverage, static checks, and Excel runtime results **separate**:
 
-**Official Microsoft Excel VBA documentation:** https://learn.microsoft.com/en-us/office/vba/api/overview/excel
+| Evidence level | What it establishes | What it does not establish |
+|---|---|---|
+| **Source integrity** | Local source files match their recorded snapshot hashes. | That upstream documentation is current or complete. |
+| **Document lookup** | A matching official document can be retrieved and read. | That a specific member belongs to an arbitrary object. |
+| **Static / agent review** | Reasoning or code can be inspected against documented contracts. | Successful VBA compilation. |
+| **Excel compilation** | Code compiles in a specific Office environment when tested. | Correct behavior for all inputs or deployments. |
+| **Runtime acceptance** | Observed behavior in an explicitly tested scenario. | Universal compatibility. |
+
+The published documentation verification includes integrity and local retrieval checks. **It does not certify Excel/VBA compilation, live COM execution, or complete correctness of generated code.** See [quality report](QUALITY-REPORT.md), [offline verification](OFFLINE-VERIFICATION.md), [limitations](LIMITATIONS.md), and [acceptance criteria](ACCEPTANCE.md).
+
+### Practical boundaries
+
+- **Offline-first tools ≠ offline AI model.** Local documentation search works without internet access; the AI client's network behavior depends on its own configuration.
+- **Snapshot coverage ≠ every API.** The knowledge package contains the supplied Microsoft VBA-Docs snapshot, not a live mirror of all present and future Office documentation.
+- **Documentation discovery ≠ member verification.** A generic property page or nearby keyword match may require an Object Browser check in the target environment.
+- **Review ≠ permission to execute.** Inspect unknown files read-only; do not run macros, change Office security settings, or modify production workbooks without approval.
+
+## Sources, licensing and attribution
+
+The knowledge corpus originates from [MicrosoftDocs/VBA-Docs](https://github.com/MicrosoftDocs/VBA-Docs). The original source, documentation licenses, notices, and third-party attributions are preserved in the knowledge archive.
+
+Licensing depends on the component: **Microsoft documentation is CC BY 4.0; original package code is MIT; original explanatory prose and adapted guidance are subject to the terms described in [`LICENSES.md`](LICENSES.md).** Do not treat the entire repository as covered by a single code license. See [source provenance](SOURCES.md) and [preserved notices](licenses/).
+
+This is an **independent community project**. It is not affiliated with, sponsored by, or endorsed by Microsoft.
+
+---
+
+<p align="center"><strong>Documentation-first. Offline-capable. Evidence-driven.</strong></p>
+<p align="center">
+  <a href="https://github.com/cycu767/excel-vba-expert/releases">Releases</a> ·
+  <a href="CHANGELOG.md">Changelog</a> ·
+  <a href="https://github.com/cycu767/excel-vba-expert/issues">Report an issue</a>
+</p>
+<p align="center"><sub>Built for the VBA applications that still need to work tomorrow.</sub></p>
