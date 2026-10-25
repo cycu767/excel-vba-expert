@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "skill_lines": 190,
+    "source_records": 70,
+    "domain_modules": 19,
+    "workflows": 7,
+    "scenarios": 10,
+    "scripts": 11,
+    "relative_link_files": 41
+  },
+  "scope": "Offline structure, contracts and hashes only; not live agent, VBA or COM validation"
+}

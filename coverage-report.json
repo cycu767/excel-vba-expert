@@ -1,0 +1,198 @@
+{
+  "schema_version": 2,
+  "checked_on": "2026-10-23",
+  "inventory_scope": "all Markdown in the user-supplied VBA-Docs archive",
+  "repository_total_documents": 38187,
+  "repository_indexed_documents": 38187,
+  "verified_source_documents": 70,
+  "curated_index_records": 70,
+  "full_documents_cached": 38187,
+  "categories": [
+    {
+      "name": "agent-platform",
+      "verified_and_indexed": 1,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "charts",
+      "verified_and_indexed": 4,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "com",
+      "verified_and_indexed": 2,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "connections",
+      "verified_and_indexed": 2,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "debugging",
+      "verified_and_indexed": 11,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "errors",
+      "verified_and_indexed": 3,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "events",
+      "verified_and_indexed": 2,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "formulas",
+      "verified_and_indexed": 1,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "graph",
+      "verified_and_indexed": 1,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "language",
+      "verified_and_indexed": 9,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "office-library",
+      "verified_and_indexed": 1,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "overview",
+      "verified_and_indexed": 2,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "performance",
+      "verified_and_indexed": 1,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "security",
+      "verified_and_indexed": 3,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "source-infrastructure",
+      "verified_and_indexed": 4,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "tables-pivots",
+      "verified_and_indexed": 2,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "ui-ux",
+      "verified_and_indexed": 1,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "userforms",
+      "verified_and_indexed": 11,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "windows-api",
+      "verified_and_indexed": 3,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    },
+    {
+      "name": "workbook-range",
+      "verified_and_indexed": 6,
+      "repository_total": null,
+      "semantic_coverage": "selected_rules_only"
+    }
+  ],
+  "gaps": [
+    "External documentation not included by the supplied repository (Win32, VS Code, pywin32)",
+    "Original source omissions and external/unresolved links are not silently filled",
+    "VBA compile, Excel runtime/COM/UI and live VS Code/Qwen activation not executed"
+  ],
+  "runtime_tests_executed": false,
+  "authored_domain_modules": 19,
+  "authored_workflows": 7,
+  "python_tests_passed": 117,
+  "live_agent_scenarios_executed": 0,
+  "inventory_status": "COMPLETE_FOR_SUPPLIED_SNAPSHOT",
+  "source_files": 38911,
+  "snapshot_by_category": {
+    "excel-api": 5997,
+    "excel-concepts": 108,
+    "excel-overview": 4,
+    "f1-index": 2118,
+    "forms-concepts": 82,
+    "office-api": 1536,
+    "office-concepts": 12,
+    "office-mac": 6,
+    "other-access": 1065,
+    "other-api-access": 3703,
+    "other-api-outlook": 4521,
+    "other-api-powerpoint": 2812,
+    "other-api-powerpoint(enumerations)": 1,
+    "other-api-project": 3263,
+    "other-api-project(enumerations)": 1,
+    "other-api-publisher": 1702,
+    "other-api-publisher(enumerations)": 1,
+    "other-api-toc": 1,
+    "other-api-visio": 2809,
+    "other-api-visio(enumerations)": 1,
+    "other-api-word": 6226,
+    "other-api-word(enumerations)": 1,
+    "other-api-word(textcolumns)": 1,
+    "other-articles": 1,
+    "other-outlook": 458,
+    "other-powerpoint": 23,
+    "other-project": 9,
+    "other-publisher": 4,
+    "other-visio": 24,
+    "other-word": 74,
+    "overview": 208,
+    "repository-meta": 3,
+    "support": 2,
+    "vba-concepts": 52,
+    "vba-how-to": 28,
+    "vba-reference": 1324,
+    "vbe": 6
+  },
+  "source_provenance": {
+    "source_type": "user_supplied_zip",
+    "source_name": "VBA-Docs-main.zip",
+    "archive_sha256": "70ca62b528225895836053deecf65458a42ef9f9cc808ab007060a4e50a1afa6",
+    "archive_bytes": 37668367,
+    "archive_comment": "6765796079a1552460769cb633068d387594dc99",
+    "revision": "6765796079a1552460769cb633068d387594dc99",
+    "revision_evidence": "ZIP comment; preserved, not independently authenticated",
+    "archive_root": "VBA-Docs-main",
+    "excluded_git_metadata": false
+  },
+  "knowledge_relative_path": "../excel-vba-expert-knowledge",
+  "semantic_review": "19 preserved curated modules; not all source pages reviewed",
+  "offline_test_guard": "LINUX_SECCOMP_KERNEL_ENFORCED",
+  "source_queries_tested": 5462
+}

@@ -1,0 +1,226 @@
+{
+  "excel-object-model.md": {
+    "title": "Excel object model: ownership and API contracts",
+    "sources": [
+      "MS-OBJECT-MODEL",
+      "MS-THISWORKBOOK",
+      "MS-ACTIVEWORKBOOK",
+      "MS-OPEN",
+      "MS-COLLECTION",
+      "MS-DICTIONARY"
+    ],
+    "coverage": "curated_partial"
+  },
+  "workbook-worksheet-range.md": {
+    "title": "Workbook, worksheet and range operations",
+    "sources": [
+      "MS-VALUE",
+      "MS-VALUE2",
+      "MS-FIND",
+      "MS-OPEN",
+      "MS-SAVECOPY",
+      "MS-DATABODY"
+    ],
+    "coverage": "curated_partial"
+  },
+  "events.md": {
+    "title": "Excel events: re-entry, boundaries and recovery",
+    "sources": [
+      "MS-CHANGE",
+      "MS-EVENTS",
+      "MS-DIM",
+      "MS-DOEVENTS",
+      "MS-ON-ERROR"
+    ],
+    "coverage": "curated_partial"
+  },
+  "vba-language.md": {
+    "title": "VBA language engineering",
+    "sources": [
+      "MS-EXPLICIT",
+      "MS-DIM",
+      "MS-TYPES",
+      "MS-SUB",
+      "MS-IIF",
+      "MS-ASSERT",
+      "MS-COLLECTION",
+      "MS-DICTIONARY"
+    ],
+    "coverage": "curated_partial"
+  },
+  "userforms-msforms.md": {
+    "title": "UserForms and Microsoft Forms: lifecycle and control contracts",
+    "sources": [
+      "MS-USERFORM",
+      "MS-INITIALIZE",
+      "MS-ACTIVATE",
+      "MS-HIDE",
+      "MS-SHOW",
+      "MS-UNLOAD",
+      "MS-QUERYCLOSE",
+      "MS-CONTROLS-ADD",
+      "MS-CONTROLS",
+      "MS-DIM",
+      "MS-MULTIPAGE",
+      "MS-TABSTRIP"
+    ],
+    "coverage": "curated_partial"
+  },
+  "ui-ux-userforms.md": {
+    "title": "Desktop UserForm UI/UX audit",
+    "sources": [
+      "MS-TABINDEX",
+      "MS-CONTROLS",
+      "MS-SHOW",
+      "MS-DOEVENTS",
+      "MS-QUERYCLOSE"
+    ],
+    "coverage": "curated_partial"
+  },
+  "charts-visualization.md": {
+    "title": "Charts and dependency visualizations",
+    "sources": [
+      "MS-CHART-ADD",
+      "MS-CHART-SOURCE",
+      "MS-NEWSERIES",
+      "MS-CHART-EXPORT",
+      "MS-GRAPH"
+    ],
+    "coverage": "curated_partial"
+  },
+  "debugging.md": {
+    "title": "Evidence-led VBA debugging",
+    "sources": [
+      "MS-DEBUG-MENU",
+      "MS-DEBUG-TOOLBAR",
+      "MS-TRACE",
+      "MS-BREAKPOINT",
+      "MS-IMMEDIATE",
+      "MS-QUICK-WATCH",
+      "MS-WATCH-ADD",
+      "MS-WATCH-EDIT",
+      "MS-WATCH-DELETE",
+      "MS-ASSERT",
+      "MS-STOP"
+    ],
+    "coverage": "curated_partial"
+  },
+  "errors-recovery.md": {
+    "title": "Error handling and application-state restoration",
+    "sources": [
+      "MS-ON-ERROR",
+      "MS-RESUME",
+      "MS-EVENTS",
+      "MS-ALERTS",
+      "MS-ACCESS-ERRORS",
+      "MS-PERFORMANCE"
+    ],
+    "coverage": "curated_partial"
+  },
+  "performance.md": {
+    "title": "Performance without semantic drift",
+    "sources": [
+      "MS-PERFORMANCE",
+      "MS-VALUE",
+      "MS-VALUE2",
+      "MS-DOEVENTS"
+    ],
+    "coverage": "curated_partial"
+  },
+  "excel-com-automation.md": {
+    "title": "Excel COM automation and process ownership",
+    "sources": [
+      "MS-THISWORKBOOK",
+      "PYWIN32-DISPATCH",
+      "MS-OPEN",
+      "MS-AUTOMATION-SECURITY",
+      "MS-QUIT",
+      "MS-ALERTS"
+    ],
+    "coverage": "curated_partial"
+  },
+  "windows-api-vba7.md": {
+    "title": "Windows API and VBA7/64-bit declarations",
+    "sources": [
+      "MS-64BIT",
+      "MS-GETACTIVEWINDOW",
+      "MS-SLEEP"
+    ],
+    "coverage": "curated_partial"
+  },
+  "code-quality.md": {
+    "title": "Code review standards and actionable findings",
+    "sources": [
+      "MS-EXPLICIT",
+      "MS-DIM",
+      "MS-ON-ERROR",
+      "MS-FIND",
+      "MS-DEBUG-MENU",
+      "MS-THISWORKBOOK"
+    ],
+    "coverage": "curated_partial"
+  },
+  "refactoring-legacy.md": {
+    "title": "Legacy VBA audit and low-risk modernization",
+    "sources": [
+      "MS-64BIT",
+      "MS-THISWORKBOOK",
+      "MS-ACTIVEWORKBOOK",
+      "MS-ON-ERROR",
+      "MS-DEBUG-MENU"
+    ],
+    "coverage": "curated_partial"
+  },
+  "security.md": {
+    "title": "Workbook safety, privacy and fail-closed operation",
+    "sources": [
+      "MS-OPEN",
+      "MS-AUTOMATION-SECURITY",
+      "MS-ALERTS",
+      "MS-SAVECOPY",
+      "MS-QUIT"
+    ],
+    "coverage": "curated_partial"
+  },
+  "testing-validation.md": {
+    "title": "Evidence levels and acceptance tests",
+    "sources": [
+      "MS-ASSERT",
+      "MS-DEBUG-MENU",
+      "MS-CHANGE",
+      "MS-EVENTS",
+      "MS-64BIT"
+    ],
+    "coverage": "curated_partial"
+  },
+  "tables-pivots-connections.md": {
+    "title": "Tables, pivots and refresh integrity",
+    "sources": [
+      "MS-DATABODY",
+      "MS-PIVOT-CREATE",
+      "MS-REFRESH",
+      "MS-QUERY-REFRESH"
+    ],
+    "coverage": "curated_partial"
+  },
+  "formulas-localization.md": {
+    "title": "Formulas, numeric precision and localization",
+    "sources": [
+      "MS-FORMULA2",
+      "MS-VALUE2",
+      "MS-TYPES",
+      "MS-PERFORMANCE"
+    ],
+    "coverage": "curated_partial"
+  },
+  "vbe-deployment.md": {
+    "title": "VBE, references and deployment boundaries",
+    "sources": [
+      "MS-LANGUAGE",
+      "MS-DEBUG-MENU",
+      "MS-64BIT",
+      "VSC-SKILLS"
+    ],
+    "coverage": "curated_partial"
+  }
+}

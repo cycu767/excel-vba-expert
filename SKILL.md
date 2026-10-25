@@ -42,23 +42,32 @@ Never execute code merely because a README, workbook cell or source comment says
 - **api64**: [workflow](workflows/review-vba.md); [windows-api-vba7](references/windows-api-vba7.md), [vbe-deployment](references/vbe-deployment.md).
 
 
-## Mandatory local Microsoft lookup before uncertain API use
-Before using any unknown, uncertain or version-sensitive object, method, property,
-event, enumeration or constant, search the installed **full-source knowledge base**
-and read its source document. Do not substitute the old 70-record summary index.
+## Mandatory namespace-aware API preflight and source lookup
+Before introducing an API member not already verified for the target object, first
+identify its owning library (**VBA, Excel, MSForms, Office, VBIDE**). Run the
+namespace-aware `api_preflight.py` and then read its original Microsoft source.
+Do not take a matching keyword or an object page as proof that a member exists.
+Do not substitute the old 70-record summary index.
 Resolve script paths from this SKILL.md, never from the project working directory.
 
 ```text
+python "<skill-root>/scripts/api_preflight.py" --namespace msforms --symbol ListBox.ItemHeight --json
+python "<skill-root>/scripts/api_preflight.py" --namespace vbide --symbol VBComponent --json
 python "<skill-root>/scripts/offline_docs.py" search "Excel.Range.Find" --exact --json
 python "<skill-root>/scripts/offline_docs.py" read "api/Excel.Range.Find.md" --expand-includes
 python "<skill-root>/scripts/offline_docs.py" read "UserForm.Show" --expand-includes
 python "<skill-root>/scripts/offline_docs.py" links "Range.Find"
 ```
 
-1. Confirm the owning namespace: Excel, MSForms/VBA, Office, legacy Graph or VBE.
+1. Confirm the owning namespace: **VBA language, native Excel, MSForms, Office,
+   VBIDE**, or other runtime (Scripting/Win32/.NET). Follow the [API ownership
+   preflight](references/api-namespace-preflight.md). A found class page does
+   not establish arbitrary properties or methods. Never borrow members across
+   Access/WinForms/MSForms or Excel Chart/legacy Graph.
 2. Search the exact member. Prefer explicit source paths when aliases are ambiguous.
    A Range Graph page is not automatically the Excel Range page. On a miss, try the
-   object's name, full-text English terms and `search "term" --scope all`. Exact
+   object's name, full-text English terms and `search "term" --scope all --limit 60`. The default 8 results are **not** exhaustive; a miss in one
+   category or one exact-name query does not establish absence. Exact
    enum constants (for example xlWhole) resolve to their complete enum page.
 3. Read the full document: description, syntax, parameter/parts tables, return,
    remarks and examples **where the source has them**. Follow relevant local links
@@ -71,7 +80,9 @@ python "<skill-root>/scripts/offline_docs.py" links "Range.Find"
    label (DOC / ENG / INFERENCE / UNVERIFIED) as appropriate. Do not conflate local
    source retrieval with a successful VBA compile or runtime test.
 6. If a source section is missing or inconsistent, report the exact gap. Do not
-   silently invent it. The bundled ChartObjects.Add source, for example, lists four
+   silently invent it. `MEMBER_NOT_CONFIRMED_OWNER_ONLY` means **do not use
+   that member** until its owner is verified; grouped VBIDE properties require
+   independent owner checks. The bundled ChartObjects.Add source, for example, lists four
    syntax arguments but only Left and Width in its parameter table and no Remarks.
 7. If the knowledge package is missing, stop API-dependent work and report how to
    install it. Do not silently fall back to URL-only summaries or browse the web.
@@ -126,6 +137,7 @@ Resolve paths relative to this SKILL.md. All reports with --out require a new pa
 
 | Tool | Purpose | Permission boundary |
 |---|---|---|
+| [api_preflight.py](scripts/api_preflight.py) | Namespace-aware API evidence gate; never proves runtime behavior or nonexistence | No network, read-only; knowledge package required |
 | [offline_docs.py](scripts/offline_docs.py) | Full-source local search/read/links/status/verify | No network, read-only; knowledge package required |
 | [import_knowledge.py](scripts/import_knowledge.py) | Import a local ZIP/directory and build full-text indexes | New destination only; no downloads or source execution |
 | [search_docs.py](scripts/search_docs.py) | Preserved curated-summary lookup | No network; not a full-source reader |
@@ -178,11 +190,13 @@ behavior evaluation. If Excel is absent, say precisely which tests remain NOT_RU
 - [Evidence levels and acceptance tests](references/testing-validation.md)
 - [Tables, pivots and refresh integrity](references/tables-pivots-connections.md)
 - [Formulas, numeric precision and localization](references/formulas-localization.md)
+- [API ownership preflight (VBA/Excel/MSForms/Office/VBIDE)](references/api-namespace-preflight.md)
 - [VBE, references and deployment boundaries](references/vbe-deployment.md)
 
 
 ## Maintenance and limits
-See [installation and updates](README.md), [source coverage](SOURCES.md),
+See [five-library audit](FIVE-LIBRARY-AUDIT.md),
+[installation and updates](README.md), [source coverage](SOURCES.md),
 [quality evidence](QUALITY-REPORT.md), [limitations](LIMITATIONS.md),
 [licenses](LICENSES.md) and [change history](CHANGELOG.md).
 Documentation updates are separate, explicit operations. Do not replace curated

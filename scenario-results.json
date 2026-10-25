@@ -1,0 +1,76 @@
+{
+  "evidence": "STATIC_RESOURCE_CONTRACT",
+  "test": "test_tools.PackageTests.test_scenario_resource_contracts",
+  "results": [
+    {
+      "id": "S01",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S02",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S03",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S04",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S05",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S06",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S07",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S08",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S09",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S10",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    }
+  ]
+}
