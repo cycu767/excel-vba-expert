@@ -1,6 +1,0 @@
-{
-  "schema_version": 1,
-  "relative_path": "../excel-vba-expert-knowledge",
-  "override_environment_variable": "EXCEL_VBA_KB",
-  "description": "Resolve relative to the installed skill, never relative to the project working directory. No automatic download or fallback to URL-only summaries."
-}

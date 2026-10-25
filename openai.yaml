@@ -1,4 +1,0 @@
-interface:
-  display_name: "Excel VBA Expert"
-  short_description: "Develop, debug and audit Excel VBA with explicit evidence gates"
-  default_prompt: "Use excel-vba-expert to inspect this Excel VBA task, select the relevant workflow, and distinguish verified results from pending Excel tests."

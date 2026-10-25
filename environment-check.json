@@ -1,8 +1,0 @@
-{
-  "platform": "Linux",
-  "python": "3.13.5",
-  "windows": false,
-  "pywin32_available": false,
-  "excel_installation": "not_probed",
-  "excel_started": false
-}
