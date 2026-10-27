@@ -32,7 +32,7 @@ and other Office products. **This is 100% mechanical coverage of the supplied
 snapshot, not proof of all current Microsoft documentation or all possible APIs.**
 The 5,997 Excel API paths include navigation/legacy pages; do not call them 5,997
 objects. Full source availability is separate from authored guidance and runtime
-verification. The 19 modules still represent selected expert guidance.
+verification. The domain modules still represent selected expert guidance.
 
 ## Local source architecture
 The separate knowledge package has `repository/` (original full text and assets),
