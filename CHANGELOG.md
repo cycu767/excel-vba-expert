@@ -1,35 +1,40 @@
 # Changelog
 
+## 2.1.0 - 2026-10-27
+
+### Added
+- `scripts/compare_vba_source.py`: offline, read-only extraction and source comparison for VBA components in macro-enabled Office packages. Reports its exact evidence scope rather than treating binary differences as source differences.
+- `scripts/compare_workbook_values.py`: offline comparison of cached cell values, preserving sheet and cell coordinates and distinguishing changed values from relocated cells.
+- `references/agent-conduct.md`: maintaining a reference baseline, safe resumable work, scope-bound delegation, and accurate evidence reporting.
+- Ten additional test scenario contracts, S11-S20 (20 total); additional unit tests for the comparison tools, including negative and damaged-input cases.
+
+### Improved
+- Strengthened testing guidance around non-vacuous assertions, mutation/negative tests, incomplete reads, test prerequisites, and risk-proportionate verification.
+- Expanded guidance on VBA array bounds, empty arrays, qualified `Application.Run`, dependency-order aggregation, cycles and rule precedence.
+- Clarified the difference between byte-level file identity, cached worksheet value equality and extracted VBA source equality.
+- Refined safe deployment, source encoding, data snapshots, restoration verification, Excel COM ownership and security-preserving offline investigation.
+- Documentation and release metadata reconciled with the existing v2.0.2 public presentation. Existing Microsoft knowledge archive unchanged.
+
+### Validation and limits
+- Structural validation and integrity manifest: PASS; 20 modules, 7 workflows, 14 scripts, 20 scenario contracts.
+- Maintainer Windows report: 156 Python unit tests passed (1 skipped), including 31 comparison-tool tests and independent probe cases.
+- Source extraction cross-checked against an independent reader on two related cp1250 samples. This is not exhaustive coverage of MS-OVBA variants.
+- No VBA compilation, Excel runtime, live COM test or live-agent scenario execution is claimed for this release.
+
 ## 2.0.2 - 2026-10-25
-- Redesigned the GitHub README with a vector hero banner, two Mermaid diagrams, an API verification walkthrough, clearer installation steps, and explicit evidence/limitations.
-- Reconciled the downloadable skill package, the repository layout, and the named release archive; retained namespace-aware API preflight from v2.0.1.
-- Updated the package file-integrity manifest for the revised documentation and added SVG banner.
-- Reused the exact previous offline Microsoft knowledge archive without changes; no VBA/Excel compilation or runtime testing is claimed for this documentation-focused release.
+- Redesigned the public GitHub README with a vector banner, Mermaid architecture and API-verification diagrams, a safer installation flow and explicit evidence boundaries.
+- Reconciled public documentation, package layout, named release assets and checksum manifest; retained the v2.0.1 API verification features.
+- Kept the separately distributed Microsoft documentation knowledge base unchanged.
 
 ## 2.0.1 - 2026-10-25
-- Audited the named VBA, Excel, MSForms, Office and VBIDE objects against the supplied snapshot; all 15 named entries have source documentation.
-- Added read-only namespace-aware `api_preflight.py` and regression tests for cross-library mistakes and unconfirmed MSForms members.
-- Routed agents to original Microsoft source and grouped VBIDE chapters; mitigated 8-result and PowerShell/CMD confusion.
-- Preserved the Microsoft source archive and existing knowledge ZIP unchanged. No Excel compilation or runtime testing was performed.
+- Introduced read-only `api_preflight.py` for namespace-aware verification across VBA, Excel, MSForms, Office and VBIDE.
+- Strengthened documentation selection, source ownership checks and regression coverage for unconfirmed MSForms members.
+- Preserved offline Microsoft source files and the companion knowledge package.
 
 ## 2.0.0 - 2026-10-23
-- Extended the existing skill, without replacing its 19 expert modules, seven
-  workflows, eight original Python tool/helper files, or VBA assets.
-- Imported every file from the user-supplied VBA-Docs ZIP; indexed all 38,187
-  Markdown documents and retained full original text, images and licenses.
-- Added offline full-text/exact API search, full-source read, line/section reads,
-  source-integrity checks, local include/link resolution and curated-ID aliases.
-- Added safe ZIP/directory import into a new portable knowledge folder.
-- Added mandatory local source lookup before uncertain API use.
-- Added real-snapshot and hostile-input tests plus OS-enforced offline test runner.
-- Split installable skill and knowledge payload to respect the skill ZIP limit.
-- Reported source omissions and untested Excel/live-agent behavior separately.
+- Added an offline indexed knowledge package from the supplied Microsoft VBA-Docs snapshot: 38,187 Markdown documents with source integrity checks and full-source reads.
+- Preserved existing modular engineering references, workflows and read-only VBA tools.
+- Separated the core skill from the larger reusable knowledge archive.
 
 ## 1.0.0 - 2026-10-23
-- Created the modular Excel VBA Expert skill with 19 domain references, 7 workflows,
-  70 reviewed source records and progressive loading.
-- Added offline search, local repository inventory and read-only VBA/workbook checks.
-- Added explicitly opt-in URL checking and new-blank-workbook COM smoke harness.
-- Added original VBA examples, scenario contracts and Windows acceptance procedure.
-- Separated source review, Python/mocked tests and unexecuted Excel/agent tests.
-- Recorded incomplete upstream inventory rather than claiming exhaustive coverage.
+- Established Excel VBA Expert with domain-specific references, engineering workflows, read-only inspection tools, VBA examples and explicit evidence levels.
