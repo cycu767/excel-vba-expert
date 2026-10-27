@@ -20,6 +20,64 @@ Browser before implementing editor automation.
 
 Check encoding of exported code and preserve localized strings. Compare source diffs and compile after import. A text extraction from vbaProject.bin is not a lossless export of every designer resource or project setting. Never use a macro container writer as an excuse to bypass project protection or trust settings.
 
+## Declared code page, not a guessed one
+[ENG] Legacy VBA storage declares its code page inside the project's own metadata,
+not in the module text. When reading module streams directly, take the code page
+from that declaration. Do not fall back to a plausible default such as cp1252 when
+the project declares a different one, and do not treat "it decoded" as proof the
+decoding was right.
+
+[ENG] A wrong single-byte code page rarely raises. It produces text that still
+looks like valid source while silently corrupting every non-ASCII character, so
+identifiers, string literals and comments change meaning without any error. If a
+decoded project contains unexpected characters, verify the declared code page
+before concluding the source is damaged or that a re-encode is needed.
+
+[ENG] When comparing two projects, decode both with their own declared code page
+and report the code page used. Comparing a cp1250 project decoded as cp1252
+against a correct read produces differences that are pure decoding artefacts, and
+comparing two identically wrong reads produces a false match.
+
+[ENG] Import is a separate encoding hazard from reading. An importer that decodes a
+source file using the system code page will destroy a file saved as UTF-8: every
+multi-byte character becomes mojibake, and part of it becomes U+FFFD, which is
+unrecoverable from the imported result. Fix it on both sides — write exported and
+generated files in the code page the importer expects, and make the importer
+reject a file carrying a BOM, containing U+FFFD, or otherwise looking like UTF-8
+masquerading as ANSI. Keep the pre-import copy so damaged positions can be restored
+by aligning against undamaged text rather than retyping it.
+
+[ENG] Detect this by counting replacement characters before and after the import,
+not by reading the result and hoping to notice. Zero before and non-zero after is
+proof the import, not the source, caused the damage.
+
+## Verifying VBA without Excel and without Trust access
+[ENG] `Workbook.VBProject` requires "Trust access to the VBA project object
+model". That setting is a security boundary: do not enable it, and do not accept
+a suggestion to enable it, merely to read code for comparison. When the only goal
+is to prove that project code is unchanged, read the source out of the package
+instead. `compare_vba_source.py` decompresses each module stream from
+`vbaProject.bin` with no Excel, no Trust-Center change and no third-party
+package.
+
+[ENG] Identical `vbaProject.bin` bytes prove byte-for-byte identity of that part,
+including its contained code; a **difference** in those bytes does not prove that
+code changed. Excel may re-serialise the OLE binary on save. To investigate a
+binary difference, compare extracted component sources separately and report
+source equality without upgrading it to "the entire project is unchanged".
+
+[ENG] Source equality has a hard ceiling. It does not cover designer resources
+behind a form's control layout, project properties, reference bindings, hidden
+attributes not present in the module text, or compiled behaviour. Where those
+matter, say which of them remain unverified and name the test that would cover
+them.
+
+[ENG] A decoder written for this purpose must be cross-validated against an
+independent reader before its verdict is used, and the cross-validation must
+assert non-vacuity: component count and total source lines above a plausible
+floor, and an equal number of matched components. Comparing two empty results
+looks like a pass.
+
 ## Security and deployment
 [ENG] Keep macro policy, trusted locations and signing under the organization's control. Do not automatically enable programmatic access to VBProject. Use an authorized signing/deployment process after code changes and verify trust on a clean target machine. Test optional library availability and provide a clear diagnostic/fallback only when its semantics are equivalent.
 

@@ -17,6 +17,20 @@ Release child Range/Worksheet/Chart references before workbook/instance teardown
 
 Keep macro execution and reading separate. Never lower macro security to run an unverified workbook. An approved Application.Run workflow must name a trusted workbook/macro explicitly, run a copy, record input/output, and respect organizational policy without enabling VBA-project access.
 
+## Orphaned instances poison later runs
+[ENG] A crashed or interrupted automation script can leave a hidden Office
+instance alive. Later gates that attach by lookup rather than by creation then
+connect to that corpse and fail en masse with an environment error such as
+"macros have been disabled" or "cannot run the macro". That is not a product
+regression. Enumerate and account for orphaned owned processes before a gate run,
+and treat simultaneous identical failures across unrelated gates as an
+environment signal that must be diagnosed first.
+
+[ENG] Distinguish attaching from creating in the gate itself, and record which
+instance identity each gate used. Before trusting a failure, check how many
+workbooks the attached instance holds and whether it is the one this run created.
+Never resolve this by killing every Office process on the machine.
+
 ## COM calls and waits
 [ENG] Capture pywintypes.com_error HRESULT, excepinfo, operation name and object identity, with sensitive values redacted. Inspect modal dialogs in a supervised visible run. Retry only classified transient rejection with a finite budget; do not retry a non-idempotent operation blindly. A loop deadline does not interrupt a single blocked COM call. Hard timeouts require a separately owned worker and a policy for that worker's Excel instance, not taskkill of all Excel processes.
 

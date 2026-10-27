@@ -3,6 +3,13 @@
 Evidence labels: **[DOC]** documented behavior; **[ENG]** skill engineering rule; **[INFERENCE]** derived interpretation; **[UNVERIFIED]** needs target-environment verification.
 
 ## Resolve ownership before a call
+[ENG] An unqualified macro name passed to `Application.Run` is **not proof**
+that the called procedure belongs to the workbook containing the caller. Name
+resolution can depend on the active workbook and other available VBA projects.
+With two similarly named procedures open, a guard may inspect the wrong workbook
+while appearing to succeed. Qualify the macro with the intended workbook and
+test with another workbook active; never infer code or data ownership from the
+active window.
 [DOC: MS-THISWORKBOOK, MS-ACTIVEWORKBOOK] The code container and active workbook are different concepts. ThisWorkbook is an internal VBA context, not an external Python selector. ActiveWorkbook can be Nothing. A menu action may deliberately target the active workbook; capture it once and validate it rather than banning it blindly.
 
 [ENG] Establish a contract for every entry point: caller, workbook identity/full path, worksheet identity (Name versus CodeName), input ranges, outputs, save policy, Excel instance owner, and side effects. In an add-in or PERSONAL.XLSB, never replace a user's data workbook with ThisWorkbook merely to eliminate ActiveWorkbook.

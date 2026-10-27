@@ -17,6 +17,39 @@ Differentiate Empty, Null, Nothing, empty text and CVErr values. Guard IsError a
 
 [DOC: MS-COLLECTION, MS-DICTIONARY] Collection offers ordered items and keys but not Dictionary.Exists. Dictionary offers key lookup and CompareMode. [ENG] Set key comparison policy before adding keys. Test duplicate keys and distinguish a duplicate from a component-creation failure. Late binding avoids a compile reference but does not install a missing scripting component.
 
+## Iterating arrays returned by a function
+[ENG] Iterate `LBound` to `UBound` of one stored variable, never `1 To UBound(x)`
+with a manual `-1` inside the loop. That pattern silently drops the last element of
+a zero-based array, and the loss is invisible whenever the output is a log or a
+report rather than a computed figure. Split the text into a local array once, then
+loop over its own bounds.
+
+[ENG] Do not "fix" the missing last line by adding `+1` to `UBound`. Splitting text
+that ends with the delimiter yields a trailing empty element, so `+1` writes an
+empty record. Handle the empty element explicitly: skip entries that are empty
+after `Trim`.
+
+[ENG] The empty VBA array is `Array()`, not `ReDim x(0 To -1)`, which raises
+run-time error 9. A helper that splits text, parses input or aggregates rows must
+define behaviour for empty input, because the compiler does not check it and a
+single-line test case is usually what exposes it.
+
+## Aggregating over a dependency graph
+[ENG] Roll values up a dependency graph in a dependency-first order, not simply in
+table order. For child-to-parent aggregation, orient edges **child -> parent** and
+run Kahn's topological sort; if edges are **parent -> child**, reverse the resulting
+order. An arbitrary iteration can sum a parent before its children are ready;
+recursion also requires explicit depth and cycle handling. A nonempty remainder
+after Kahn proves that a cycle exists, but **not every remaining node is in a
+cycle**: some may merely depend on cyclic nodes. Use strongly connected components
+when you need to identify the actual cycle members. Report unresolved and blocked
+nodes separately and do not include them in an ordinary sum-closure PASS.
+
+[ENG] When several rules can match one record, define precedence explicitly and make
+ties visible. "Longest/most specific match wins" is workable; an unresolved tie must
+route the record to a review state with a stated reason, never to a silent winner.
+Sort the rule table once at load time rather than rescanning for the best match.
+
 ## Numeric business rules
 [ENG] Choose Currency only when four decimal places and its range match the domain; otherwise choose a documented Decimal/Double strategy. Do not replace calculation types, rounding or operation order during cosmetic refactoring. Specify rounding boundaries and compare monetary totals using the domain's agreed precision, not an arbitrary epsilon. Treat Excel serial dates, locale parsing and display formats separately.
 

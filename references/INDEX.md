@@ -21,6 +21,7 @@ Read only the module relevant to the current task. All domain modules are select
 - [Tables, pivots and refresh integrity](tables-pivots-connections.md): source IDs MS-DATABODY, MS-PIVOT-CREATE, MS-REFRESH, MS-QUERY-REFRESH.
 - [Formulas, numeric precision and localization](formulas-localization.md): source IDs MS-FORMULA2, MS-VALUE2, MS-TYPES, MS-PERFORMANCE.
 - [VBE, references and deployment boundaries](vbe-deployment.md): source IDs MS-LANGUAGE, MS-DEBUG-MENU, MS-64BIT, VSC-SKILLS.
+- [Agent and subagent conduct on long VBA tasks](agent-conduct.md): source IDs MS-AUTOMATION-SECURITY, VSC-SKILLS, MS-OBJECT-MODEL.
 
 [Source lookup guide](documentation-index.md) | [Main workflow router](../SKILL.md)
 
