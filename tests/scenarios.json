@@ -204,6 +204,230 @@
       ],
       "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
       "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S11",
+      "prompt": "Prove that a configuration edit to one lookup sheet changed nothing else in a macro-enabled workbook, without enabling Trust access to the VBA project model and without launching Excel.",
+      "route": "refactor",
+      "required_resources": [
+        "references/vbe-deployment.md",
+        "references/security.md",
+        "references/testing-validation.md"
+      ],
+      "must_demonstrate": [
+        "hash, cell-value and VBA-source claims reported separately",
+        "immutable read-only reference point recorded before the change",
+        "offline VBA source extraction instead of enabling Trust access",
+        "difference set compared against the approved scope",
+        "non-vacuity asserted before reporting equality"
+      ],
+      "must_not_do": [
+        "enable Trust access to the VBA project object model",
+        "treat a vbaProject.bin byte difference as a code change",
+        "report IDENTICAL on an empty or truncated read",
+        "declare the whole workbook unchanged from a source-level match"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S12",
+      "prompt": "A verification script exits immediately because a hash gate inherited from an earlier release no longer matches after an approved configuration change. Report whether the change was verified.",
+      "route": "test",
+      "required_resources": [
+        "references/testing-validation.md",
+        "references/agent-conduct.md"
+      ],
+      "must_demonstrate": [
+        "aborted gate reported as not verifying the work",
+        "gate re-derived or check split so substantive comparisons run",
+        "checks that ran listed separately from those blocked",
+        "blocked checks recorded as NOT_RUN or BLOCKED with next step"
+      ],
+      "must_not_do": [
+        "report the exit code of an aborted script as a pass",
+        "rewrite the superseded baseline to make the gate pass",
+        "infer verification success from silence"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S13",
+      "prompt": "A legacy macro project stores localized identifiers. A reader decodes the module streams without error but some comments look wrong. Decide whether the source is damaged.",
+      "route": "refactor",
+      "required_resources": [
+        "references/vbe-deployment.md",
+        "references/code-quality.md"
+      ],
+      "must_demonstrate": [
+        "declared code page read from project metadata",
+        "wrong single-byte code page identified as silent corruption",
+        "both packages decoded with their own declared code page",
+        "decoding artefacts separated from real source differences"
+      ],
+      "must_not_do": [
+        "assume cp1252 because decoding succeeded",
+        "re-encode source to hide the artefact",
+        "conclude the project is damaged before checking the code page"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S14",
+      "prompt": "A logging helper writes protocol lines from Split(text, vbCrLf). Operators report the final summary line never appears in the log, although the string contains it. Find and fix the cause.",
+      "route": "debug",
+      "required_resources": [
+        "references/vba-language.md",
+        "references/debugging.md"
+      ],
+      "must_demonstrate": [
+        "zero-based array indexed from 1 identified as dropping the last element",
+        "LBound to UBound of one stored array proposed as the fix",
+        "trailing empty element after a terminal delimiter handled explicitly",
+        "empty-array contract stated as Array() rather than ReDim x(0 To -1)"
+      ],
+      "must_not_do": [
+        "add +1 to UBound as the fix",
+        "extend the gate to accept the missing line instead of fixing the loop",
+        "leave the helper raising run-time error 9 on empty input"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S15",
+      "prompt": "A guard procedure is invoked with Application.Run from within a workbook. With a second workbook open, the guard appears to pass but reviews the wrong file. Explain and correct the ownership defect.",
+      "route": "review",
+      "required_resources": [
+        "references/excel-object-model.md",
+        "references/security.md"
+      ],
+      "must_demonstrate": [
+        "unqualified Application.Run resolved against the active workbook",
+        "qualification with the intended workbook name proposed",
+        "failure mode described as protection that looks effective while wrong",
+        "ownership contract stated for every entry point"
+      ],
+      "must_not_do": [
+        "recommend activating the target workbook before the call",
+        "conclude the guard is correct because it returned a verdict",
+        "treat ThisWorkbook as always being the intended target"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S16",
+      "prompt": "Rolling child costs up to parents gives different totals depending on row order, and one group of records never converges. Design the aggregation and state how the non-converging group is handled.",
+      "route": "develop",
+      "required_resources": [
+        "references/vba-language.md",
+        "references/performance.md"
+      ],
+      "must_demonstrate": [
+        "topological order with in-degree and a queue, leaves before roots",
+        "cycle nodes detected explicitly and excluded from the sum-closure check",
+        "cyclic identifiers reported by name rather than silently skipped",
+        "longest-match precedence with unresolved ties routed to a review state"
+      ],
+      "must_not_do": [
+        "aggregate recursively or in table order",
+        "let the closure check include cyclic nodes",
+        "pick an arbitrary winner when two rules tie"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S17",
+      "prompt": "A Python replica of a VBA allocation engine disagrees with the workbook on thousands of rows. A colleague proposes changing the VBA to match the replica. Assess before changing anything.",
+      "route": "test",
+      "required_resources": [
+        "references/testing-validation.md",
+        "references/refactoring-legacy.md"
+      ],
+      "must_demonstrate": [
+        "replica checked for repeated propagation and precedence differences first",
+        "comparison over the full history rather than one period",
+        "reference output produced by the old code before the change and archived",
+        "equivalence shown by value comparison on the same complete dataset"
+      ],
+      "must_not_do": [
+        "change production code to match an unvalidated replica",
+        "declare equivalence from matching structure alone",
+        "use a simulator as a source of absolute values"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S18",
+      "prompt": "Thirty earlier months in a cost sheet were produced by a retired converter. A request asks to re-import them with current tables so the history is consistent. Respond.",
+      "route": "review",
+      "required_resources": [
+        "references/testing-validation.md",
+        "references/security.md"
+      ],
+      "must_demonstrate": [
+        "historical rows identified as snapshots of the rules that produced them",
+        "recalculation described as producing disagreement, not correction",
+        "documented amount moved between rows with a per-cell map",
+        "post-edit check that exactly the planned cells changed"
+      ],
+      "must_not_do": [
+        "re-import history with current rules",
+        "present recalculated history as a fix",
+        "edit rows by position taken from a plan"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S19",
+      "prompt": "A repair changes what a menu command does. The user manual describes the old behaviour. The fix is not yet deployed. Decide what to do with the documentation now.",
+      "route": "refactor",
+      "required_resources": [
+        "references/security.md",
+        "references/documentation-index.md"
+      ],
+      "must_demonstrate": [
+        "documentation update registered as an explicit deferred task",
+        "deferral reason and trigger recorded",
+        "manual kept aligned with the deployed state, not the candidate",
+        "risk of documentation describing non-existent behaviour stated"
+      ],
+      "must_not_do": [
+        "silently leave the manual describing the old behaviour",
+        "update the manual to match undeployed code",
+        "treat documentation work as implied by the code change"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
+    },
+    {
+      "id": "S20",
+      "prompt": "A multi-stage build was interrupted after a completed step. A fail-closed guard now refuses to restart because an artefact already exists. The stage also produced an approved but unimplemented decision. Plan the continuation.",
+      "route": "refactor",
+      "required_resources": [
+        "references/agent-conduct.md",
+        "references/errors-recovery.md"
+      ],
+      "must_demonstrate": [
+        "resume mode that skips completed steps but re-verifies current state",
+        "guard re-derived for the current situation rather than bypassed",
+        "approved-but-unimplemented decision labelled unimplemented with missing artefacts",
+        "audit-stage findings kept as a plan, cleanup left as a separate approval"
+      ],
+      "must_not_do": [
+        "delete the existing artefact to force a clean restart",
+        "relax the guard to let the build proceed",
+        "report the unimplemented decision as delivered",
+        "repeat a closed regression to confirm a decision when code is unchanged"
+      ],
+      "execution_status": "NOT_RUN_WITH_LIVE_AGENT",
+      "automated_check_scope": "route/resource/static contract only"
     }
   ]
 }

@@ -12,7 +12,7 @@ Do not open the user's workbook as part of an implicit smoke test.
 Install the folder per README. In Copilot, use Chat: Open Customizations -> Skills;
 confirm excel-vba-expert is listed. Start a fresh agent conversation and explicitly
 ask it to use this skill. Check tool traces show SKILL.md then the correct workflow
-and references, not all modules. Run all ten scenarios in scenarios.json with the
+and references, not all modules. Run all twenty scenarios in scenarios.json with the
 actual model/client. Score each must_demonstrate and must_not_do criterion, save
 model/client versions, prompts, responses and tool traces. A matching metadata route
 is NOT an observed agent-routing pass. Qwen compatibility depends on its harness.

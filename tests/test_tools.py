@@ -247,7 +247,7 @@ class PackageTests(TempCase):
     def test_actual_package_validation(self):
         r=validate_skill.validate(ROOT);self.assertEqual(r['status'],'PASS',r['errors'])
     def test_scenario_resource_contracts(self):
-        cases=common.read_json(ROOT/'tests/scenarios.json')['scenarios'];self.assertEqual(len(cases),10)
+        cases=common.read_json(ROOT/'tests/scenarios.json')['scenarios'];self.assertEqual(len(cases), 20)
         for case in cases:
             with self.subTest(case=case['id']):
                 self.assertEqual(case['execution_status'],'NOT_RUN_WITH_LIVE_AGENT')
