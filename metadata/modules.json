@@ -222,5 +222,14 @@
       "VSC-SKILLS"
     ],
     "coverage": "curated_partial"
+  },
+  "agent-conduct.md": {
+    "title": "Agent and subagent conduct on long VBA tasks",
+    "sources": [
+      "MS-AUTOMATION-SECURITY",
+      "VSC-SKILLS",
+      "MS-OBJECT-MODEL"
+    ],
+    "coverage": "curated_partial"
   }
 }

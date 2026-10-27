@@ -71,6 +71,76 @@
       "live_agent_behavior": "NOT_RUN",
       "excel_behavior": "NOT_RUN",
       "note": "Checks file availability, route contract and expected/prohibited criteria; does not evaluate model responses."
+    },
+    {
+      "id": "S11",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S12",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S13",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S14",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S15",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S16",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S17",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S18",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S19",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
+    },
+    {
+      "id": "S20",
+      "resource_contract": "PASS",
+      "live_agent_behavior": "NOT_RUN",
+      "excel_behavior": "NOT_RUN",
+      "note": "Static resource/route/criteria contract only; no agent or Excel behavior tested."
     }
   ]
 }

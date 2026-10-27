@@ -30,7 +30,8 @@
     "references": [
       "refactoring-legacy",
       "vbe-deployment",
-      "testing-validation"
+      "testing-validation",
+      "agent-conduct"
     ]
   },
   "test": {
@@ -38,7 +39,8 @@
     "references": [
       "testing-validation",
       "events",
-      "errors-recovery"
+      "errors-recovery",
+      "agent-conduct"
     ]
   },
   "userform": {
